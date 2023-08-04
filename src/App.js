@@ -1,10 +1,10 @@
 import React from "react";
-import NewEvents from "./pages/newEvents/NewEvents";
+import Home from "./pages/home/Home";
 
 export default function App() {
   return (
     <div>
-      <NewEvents />
+      <Home />
     </div>
   )
 }
