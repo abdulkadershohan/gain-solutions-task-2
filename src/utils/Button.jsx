@@ -2,16 +2,15 @@ import React from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Button({ text,
-    link,
     blank, onClick, borderRadius, bgColor, px, py,
     fontWeight, fontSize, textColor, hoverBgColor,
-    loading
+    loading, children, ...rest
 
-}) {
+},) {
     return (
         <>
             {loading ? <ClipLoader color="#36d7b7" /> : (
-                <a href={link}
+                <button
                     className={
                         `${borderRadius || 'rounded-md'}
                     ${bgColor || 'bg-indigo-600'}
@@ -24,14 +23,14 @@ export default function Button({ text,
                     ${hoverBgColor || 'hover:bg-indigo-500'}
                      focus-visible:outline focus-visible:outline-2 
                      focus-visible:outline-offset-2
-                    focus-visible:outline-indigo-600
+                    focus-visible:outline-indigo-600 mt-4
                     `
                     }
                     onClick={onClick}
-                    target={blank ? "_blank" : "_self"} rel="noreferrer"
+                    {...rest}
                 >
-                    {text}
-                </a>
+                    {text}  {children}
+                </button>
             )}
         </>
     )

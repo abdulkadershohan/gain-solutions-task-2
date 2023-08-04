@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../../assets/images/logo.png";
-import { Input } from "../../../utils";
+import { Button, Input } from "../../../utils";
 
 export default function Registration() {
     const [name, setName] = React.useState('')
@@ -95,12 +95,20 @@ export default function Registration() {
                         value={profileImage}
                         onChange={(e) => setProfileImage(e.target.value)}
                     />
-                    <button
-                        type="submit"
-                        className="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-opacity-50"
+                    <div
+                        className="flex flex-col gap-4 mt-4"
                     >
-                        Create an account
-                    </button>
+                        <Button
+                            type="submit"
+                            text="Create Account"
+                        />
+                        <button className="
+                    
+                    text-sm font-semibold leading-6 text-gray-900">
+                            Already have an account? <span className="text-indigo-600 hover:underline">Login</span>
+                            <span aria-hidden="true">→</span></button>
+
+                    </div>
                 </form>
             </div>
 
