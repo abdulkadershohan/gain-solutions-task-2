@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./utils/Button";
 import Input from "./utils/Input";
+import Loading from "./utils/Loading";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         placeholder={'Email'}
 
       />
+      <Loading />
     </div>
   )
 }
