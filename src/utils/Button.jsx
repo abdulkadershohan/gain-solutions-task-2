@@ -4,7 +4,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 export default function Button({ text,
     blank, onClick, borderRadius, bgColor, px, py,
     fontWeight, fontSize, textColor, hoverBgColor,
-    loading, children, ...rest
+    loading, children, mt, ...rest
 
 },) {
     return (
@@ -23,7 +23,7 @@ export default function Button({ text,
                     ${hoverBgColor || 'hover:bg-indigo-500'}
                      focus-visible:outline focus-visible:outline-2 
                      focus-visible:outline-offset-2
-                    focus-visible:outline-indigo-600 mt-4
+                    focus-visible:outline-indigo-600 ${mt || 'mt-4'}
                     `
                     }
                     onClick={onClick}
