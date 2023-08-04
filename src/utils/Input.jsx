@@ -1,13 +1,15 @@
 import React from "react";
 
-export default function Input({ placeholder, type, errorMessage, onChange, value, ...rest }) {
+export default function Input({ placeholder, label, type, errorMessage, onChange, value, ...rest }) {
     return (
         <div
-            className="flex flex-col gap-1 font-play items-cente p-8"
+            className="flex flex-col gap-1 font-play "
         >
             <label
                 className="text-lg font-normal text-black"
-            >First name</label>
+            >
+                {label}
+            </label>
             <input
                 placeholder={placeholder}
                 type={type || "text"}

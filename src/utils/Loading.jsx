@@ -1,8 +1,7 @@
 import HashLoader from "react-spinners/HashLoader";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
-function Loading() {
-    let type = 'authChackd'
+function Loading({ type }) {
     let content = ''
     const override = {
         display: "flex",
