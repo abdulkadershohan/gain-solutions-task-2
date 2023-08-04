@@ -1,10 +1,10 @@
 import React from "react";
-import Login from "./pages/auth/login/Login";
+import Registration from "./pages/auth/registration/Registration";
 
 export default function App() {
   return (
     <div>
-      <Login />
+      <Registration />
     </div>
   )
 }
