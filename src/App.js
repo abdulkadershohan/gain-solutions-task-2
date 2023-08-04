@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "./utils/Button";
+import Input from "./utils/Input";
 
 export default function App() {
   return (
@@ -9,6 +11,14 @@ export default function App() {
       >
         lorem ipsum dolor sit amet consectetur adipisicing elit.
       </p>
+      <Button
+        text={'Get started'}
+        link={'/login'}
+      />
+      <Input
+        placeholder={'Email'}
+
+      />
     </div>
   )
 }
