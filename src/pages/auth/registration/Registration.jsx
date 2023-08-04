@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "../../../assets/images/logo.png";
-import { Button, Input } from "../../../utils";
 import RegisterForm from "../../../components/form/RegisterForm";
 
 export default function Registration() {

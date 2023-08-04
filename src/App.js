@@ -1,10 +1,10 @@
 import React from "react";
-import Registration from "./pages/auth/registration/Registration";
+import NewEvents from "./pages/newEvents/NewEvents";
 
 export default function App() {
   return (
     <div>
-      <Registration />
+      <NewEvents />
     </div>
   )
 }
