@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import useAuthCheck from "../hook/useAuthCheck";
 import Login from "../pages/auth/login/Login";
 import Registration from "../pages/auth/registration/Registration";
+import EditEvents from "../pages/editEvents/EditEvents";
 import Home from "../pages/home/Home";
 import NewEvents from "../pages/newEvents/NewEvents";
 import UserProfile from "../pages/profile/UserProfile";
@@ -42,6 +43,8 @@ export default function UserRoutes() {
 
                 <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
                 <Route path="/new-event" element={<PrivateRoute><NewEvents /></PrivateRoute>} />
+                <Route path="/edit-event/:id" element={<PrivateRoute><EditEvents /></PrivateRoute>} />
+
                 <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
             </Routes>
         </Router>
