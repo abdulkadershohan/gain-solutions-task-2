@@ -1,12 +1,13 @@
 import moment from "moment/moment";
 import React from "react";
+import { useSelector } from "react-redux";
 import ModalM from "../../components/modal/Modal";
 import { useGetAllEventsQuery } from "../../features/event/eventApi";
 import { Button, Loading } from "../../utils";
 
 export default function EventList() {
     const { data: eventListData, isLoading, isError, error } = useGetAllEventsQuery()
-
+    const auth = useSelector(state => state.auth)
     const tableRow = ['Title', 'Location', 'Start Date', 'End Date', 'RSVP', 'Show Details']
 
     // deside what to render
@@ -61,7 +62,12 @@ export default function EventList() {
                                 <Button
                                     className="px-2  pt-1 rounded-lg bg-green-500 hover:bg-green-600 text-white"
                                 >
-                                    RSVP
+                                    {
+                                        //  auth.user.id
+                                        item.attendees?.find(item => item.user_id === auth.user.id) ? 'Attending' : 'RSVP'
+
+
+                                    }
                                 </Button>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-white">

@@ -7,6 +7,14 @@
       "profileImage": "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?w=740&t=st=1691230522~exp=1691231122~hmac=bdc28ba53f29c70ec86ce432a9151fb102a9390a826908e336bf01cd32ef53cf",
       "phoneNumber": "+8801766614798",
       "id": 1
+    },
+    {
+      "email": "abdulkadirshohan1@gmail.com",
+      "password": "$2a$10$4h9scQjrG6S0DV5OU/L72OzdW/YDZOqGZ6KJ3X8a0T9RtTJX7ZNRS",
+      "name": "Abdul Kader",
+      "profileImage": "a",
+      "phoneNumber": "+8801766614798",
+      "id": 2
     }
   ],
   "events": [
@@ -44,16 +52,34 @@
         {
           "email": "abdulkadirshohan@gmail.com",
           "name": "Abdul Kader",
+          "user_id": 1,
           "id": 1
         },
         {
           "email": "exmaple@gmail.com",
           "name": "mr x",
+          "user_id": 2,
           "id": 2
         }
       ],
       "id": 4,
       "user_id": 1
+    },
+    {
+      "title": "asas",
+      "description": "as",
+      "start_date": "2023-08-05T23:27",
+      "end_date": "2023-08-30T19:27",
+      "location": "aq",
+      "createdBy": {
+        "email": "abdulkadirshohan1@gmail.com",
+        "name": "Abdul Kader",
+        "profileImage": "a",
+        "phoneNumber": "+8801766614798",
+        "id": 2
+      },
+      "attendees": [],
+      "id": 5
     }
   ]
 }

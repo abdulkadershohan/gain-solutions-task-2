@@ -76,7 +76,12 @@ export default function EditEventFrom() {
         }
 
     }, [editIsSuccess, editIsError, editError, navigate])
-
+    // is not owner then route to home
+    React.useEffect(() => {
+        if (singleData?.createdBy?.id !== auth?.user?.id) {
+            navigate('/')
+        }
+    }, [singleData, auth, navigate])
     // deside what to render
     let content = null
     if (isLoading) {
