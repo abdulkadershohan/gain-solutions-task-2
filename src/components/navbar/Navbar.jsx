@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { userLoggedOut } from "../../features/auth/authSlice";
 import { Button } from "../../utils";
@@ -12,12 +13,12 @@ const navbardata = [
     {
         id: 2,
         title: 'Create Event',
-        url: '/events'
+        url: '/event'
     },
     {
         id: 3,
         title: 'Profile',
-        url: '/about'
+        url: '/profile'
     },
 
 ]
@@ -60,17 +61,17 @@ export default function Navbar() {
                 >
                     {
                         navbardata.map(nav => (
-                            <a
+                            <Link
                                 key={nav.id}
-                                href={nav.url}
-
+                                to={nav.url}
+                                onClick={() => setSelected(nav.id)}
                                 className={`
                                 ${selected === nav.id && ' underline '}
-                                font-play font-medium text-lg text-gray-600 hover:text-gray-800 hover:bg-green-200 px-4 py-2 rounded-md
+                                font-play font-medium text-lg text-gray-600 hover:text-gray-800 hover:bg-white px-4 py-2 rounded-md
                                 `}
                             >
                                 {nav.title}
-                            </a>
+                            </Link>
                         ))
                     }
 

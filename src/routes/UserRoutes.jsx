@@ -4,6 +4,8 @@ import useAuthCheck from "../hook/useAuthCheck";
 import Login from "../pages/auth/login/Login";
 import Registration from "../pages/auth/registration/Registration";
 import Home from "../pages/home/Home";
+import NewEvents from "../pages/newEvents/NewEvents";
+import UserProfile from "../pages/profile/UserProfile";
 import { Loading } from "../utils";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
@@ -39,6 +41,8 @@ export default function UserRoutes() {
                 />
 
                 <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+                <Route path="/event" element={<PrivateRoute><NewEvents /></PrivateRoute>} />
+                <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
             </Routes>
         </Router>
     )
