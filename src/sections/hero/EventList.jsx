@@ -9,7 +9,30 @@ import { Button, Loading } from "../../utils";
 
 export default function EventList() {
     const navigate = useNavigate()
-    const { data: eventListData, isLoading, isError, error } = useGetAllEventsQuery()
+    const { data: tableData, isLoading, isError, error } = useGetAllEventsQuery()
+    // const [page, setPage] = React.useState(1)
+    // const [end, setEnd] = React.useState(false)
+    // const [eventListData, setTableData] = React.useState([])
+    // React.useEffect(() => {
+    //     // get 5 slice from every page increment
+    //     const start = (page - 1) * 2
+    //     setEnd(page * 2)
+    //     setTableData(tableData?.slice(start, end))
+    //     console.log(end)
+
+    //     // const start = (page - 1) * 5
+    //     // const end = page * 5
+    //     // // handle end is greater then data length
+    //     // if (end > tableData?.length) {
+    //     //     Toastify({
+    //     //         type: 'error',
+    //     //         message: 'No more data repining from the first page'
+    //     //     })
+    //     //     setPage(1)
+    //     //     return
+    //     // }
+    //     // setTableData(tableData?.slice(start, end))
+    // }, [tableData, page, end])
     const auth = useSelector(state => state.auth)
     const tableRow = ['Title', 'Location', 'Start Date', 'End Date', 'RSVP', 'Show Details', 'Action']
 
@@ -21,10 +44,10 @@ export default function EventList() {
     if (!isLoading && isError) {
         content = <p>{error.data}</p>
     }
-    if (!isLoading && !isError && eventListData?.length === 0) {
+    if (!isLoading && !isError && tableData?.length === 0) {
         content = <p>No Event Found</p>
     }
-    if (!isLoading && !isError && eventListData?.length > 0) {
+    if (!isLoading && !isError && tableData?.length > 0) {
         content = <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left  text-gray-400">
                 <thead className="text-xs uppercase bg-gray-700 text-gray-400">
@@ -41,7 +64,7 @@ export default function EventList() {
                 </thead>
                 <tbody>
                     {
-                        eventListData.map((item, index) => <tr
+                        tableData.map((item, index) => <tr
                             key={Math.random()}
                             className={`${index % 2 === 0 ? ' bg-gray-800' : 'bg-gray-900'} border-b border-gray-700  hover:bg-gray-600 `}
                         >
@@ -133,14 +156,28 @@ export default function EventList() {
 
                 </tbody>
             </table>
-            <nav className="flex items-center justify-between pt-4" aria-label="Table navigation">
+            <nav className="flex items-center justify-between py-4" aria-label="Table navigation">
                 <span className="text-sm font-normal text-gray-400">Showing <span className="font-semibold text-gray-900 ">1-10</span> of <span className="font-semibold text-gray-900 ">1000</span></span>
                 <ul className="inline-flex -space-x-px text-sm h-8 gap-1">
-                    <li>
+                    <li
+                        onClick={() => {
+                            // if (page > 1) {
+                            //     setPage(prev => prev - 1)
+                            // }
+                        }}
+                    >
                         <p className="flex cursor-pointer items-center justify-center px-3 h-8 ml-0 leading-tight   border  rounded-l-lg bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white">Previous</p>
                     </li>
-
-                    <li>
+                    <li
+                        onClick={() => {
+                            // if (end > tableData?.length) {
+                            //     return
+                            // }
+                            // else {
+                            //     setPage(prev => prev + 1)
+                            // }
+                        }}
+                    >
                         <p className="flex cursor-pointer items-center justify-center px-3 h-8 leading-tight rounded-r-lg bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white">Next</p>
                     </li>
                 </ul>
