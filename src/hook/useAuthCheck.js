@@ -1,32 +1,20 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { adminUserLoggedIn } from "../features/auth/adminAuthSlice";
-import { studentUserLoggedIn } from "../features/auth/studentAuthSlice";
+import { userLoggedIn } from "../features/auth/authSlice";
+
 
 export default function useAuthCheck() {
     const dispatch = useDispatch();
     const [authChecked, setAuthChecked] = useState(false);
 
     useEffect(() => {
-        const adminAuth = localStorage?.getItem("adminAuth");
-        const studentAuth = localStorage?.getItem("studentAuth");
+        const userAuth = localStorage?.getItem("auth");
 
-        if (adminAuth) {
-            const auth = JSON.parse(adminAuth);
+        if (userAuth) {
+            const auth = JSON.parse(userAuth);
             if (auth?.accessToken && auth?.user) {
                 dispatch(
-                    adminUserLoggedIn({
-                        accessToken: auth.accessToken,
-                        user: auth.user,
-                    })
-                );
-            }
-        }
-        if (studentAuth) {
-            const auth = JSON.parse(studentAuth);
-            if (auth?.accessToken && auth?.user) {
-                dispatch(
-                    studentUserLoggedIn({
+                    userLoggedIn({
                         accessToken: auth.accessToken,
                         user: auth.user,
                     })
