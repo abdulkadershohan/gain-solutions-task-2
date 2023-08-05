@@ -25,7 +25,10 @@ const navbardata = [
 ]
 export default function Navbar() {
     const dispatch = useDispatch()
-    const [selected, setSelected] = React.useState(1)
+    //route path name
+    const pathName = window.location.pathname
+    const activPath = pathName === '/' ? 1 : pathName === '/new-event' ? 2 : pathName === '/profile' ? 3 : 1
+    const [selected, setSelected] = React.useState(activPath)
     const auth = JSON.parse(localStorage.getItem('auth'))
 
     const handleLogout = () => {
