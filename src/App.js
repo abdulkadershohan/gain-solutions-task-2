@@ -1,10 +1,10 @@
 import React from "react";
-import Home from "./pages/home/Home";
+import UserRoutes from "./routes/UserRoutes";
 
 export default function App() {
   return (
     <div>
-      <Home />
+      <UserRoutes />
     </div>
   )
 }
