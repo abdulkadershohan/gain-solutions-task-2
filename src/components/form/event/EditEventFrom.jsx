@@ -76,12 +76,7 @@ export default function EditEventFrom() {
         }
 
     }, [editIsSuccess, editIsError, editError, navigate])
-    // is not owner then route to home
-    React.useEffect(() => {
-        if (singleData?.createdBy?.id !== auth?.user?.id) {
-            navigate('/')
-        }
-    }, [singleData, auth, navigate])
+
     // deside what to render
     let content = null
     if (isLoading) {
@@ -101,15 +96,18 @@ export default function EditEventFrom() {
                 <Input required label='End date' type="datetime-local" placeholder="End date" value={end_date} onChange={e => setEndDate(e.target.value)} />
                 <Input required label='Location' type="text" placeholder="Location" value={location} onChange={e => setLocation(e.target.value)} />
             </div>
-
+            {
+                singleData?.createdBy?.id !== auth?.user?.id && <p className="text-red-500">You can't edit this event</p>
+            }
             <Button
                 className="mt-2 bg-[#ff3366] text-white px-4 py-2 rounded-md"
                 text={'Create'}
                 type='submit'
-                disabled={isLoading || editIsloading}
+                disabled={isLoading || editIsloading || singleData?.createdBy?.id !== auth?.user?.id}
             />
         </form>
     }
+
     return (
         <>
             {content}

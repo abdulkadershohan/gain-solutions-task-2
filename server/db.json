@@ -31,15 +31,8 @@
         "phoneNumber": "+8801766614798",
         "id": 1
       },
-      "attendees": [
-        {
-          "user_id": 1,
-          "email": "abdulkadirshohan@gmail.com",
-          "name": "Abdul Kader"
-        }
-      ],
-      "id": 3,
-      "user_id": 1
+      "attendees": [],
+      "id": 3
     },
     {
       "title": "Weeding 11",
@@ -54,9 +47,14 @@
         "phoneNumber": "+8801766614798",
         "id": 1
       },
-      "attendees": [],
-      "id": 4,
-      "user_id": 1
+      "attendees": [
+        {
+          "user_id": 1,
+          "email": "abdulkadirshohan@gmail.com",
+          "name": "Abdul Kader"
+        }
+      ],
+      "id": 4
     },
     {
       "title": "asas",
