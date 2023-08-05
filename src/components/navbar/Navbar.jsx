@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import logo from "../../assets/images/logo.png";
+import { userLoggedOut } from "../../features/auth/authSlice";
 import { Button } from "../../utils";
 const navbardata = [
     {
@@ -20,9 +22,12 @@ const navbardata = [
 
 ]
 export default function Navbar() {
+    const dispatch = useDispatch()
     const [selected, setSelected] = React.useState(1)
-    const [isOpen, setIsOpen] = React.useState(false)
-
+    const handleLogout = () => {
+        dispatch(userLoggedOut())
+        localStorage.removeItem('auth')
+    }
     return (
         <div
             className="container-md  bg-white shadow-md"
@@ -73,7 +78,7 @@ export default function Navbar() {
                 <Button
                     text={'Logout'}
                     className="bg-[#ff3366] text-white px-4 py-[0.4rem] md:py-2 rounded-md font-play"
-
+                    onClick={handleLogout}
                 />
             </div>
 
