@@ -5,20 +5,20 @@ const initialState = {
     user: undefined,
 };
 
-const studentAuthSlice = createSlice({
+const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        studentUserLoggedIn: (state, action) => {
+        userLoggedIn: (state, action) => {
             state.accessToken = action.payload.accessToken;
             state.user = action.payload.user;
         },
-        studentUserLoggedOut: (state) => {
+        userLoggedOut: (state) => {
             state.accessToken = undefined;
             state.user = undefined;
         },
     },
 });
 
-export const { studentUserLoggedIn, studentUserLoggedOut } = studentAuthSlice.actions;
-export default studentAuthSlice.reducer;
+export const { userLoggedIn, userLoggedOut } = authSlice.actions;
+export default authSlice.reducer;

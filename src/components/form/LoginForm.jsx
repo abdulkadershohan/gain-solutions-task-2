@@ -1,8 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useLoginMutation } from "../../features/auth/authApi";
 import { Button, Input } from "../../utils";
 
 export default function LoginForm() {
+    const [login, { isLoading, isError, isSuccess, error }] = useLoginMutation()
     const navigate = useNavigate()
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
@@ -12,8 +14,14 @@ export default function LoginForm() {
             email,
             password,
         }
-        console.log(body)
+        login(body)
     }
+    React.useEffect(() => {
+        alert('Login Success')
+    }, [isSuccess])
+    React.useEffect(() => {
+        console.log(error)
+    }, [isError])
     return (
         <form
             onSubmit={handleSubmit}
@@ -34,11 +42,15 @@ export default function LoginForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
+            {
+                isError && <p className="text-red-600">Authentication Failed</p>
+            }
 
             <div className="flex flex-col gap-4 mt-4">
                 <Button
                     type="submit"
                     text="Login"
+                    disabled={isLoading}
                 />
                 <button className="text-sm font-semibold leading-6 text-gray-900"
                     onClick={() => navigate('/registration')}

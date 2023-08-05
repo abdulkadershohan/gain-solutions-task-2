@@ -1,7 +1,7 @@
 import { apiSlice } from "../api/apiSlice";
-import { studentUserLoggedIn } from "./studentAuthSlice";
+import { userLoggedIn } from "./authSlice";
 
-export const studentAuthApi = apiSlice.injectEndpoints({
+export const authApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         register: builder.mutation({
             query: (data) => ({
@@ -22,7 +22,7 @@ export const studentAuthApi = apiSlice.injectEndpoints({
                     );
 
                     dispatch(
-                        studentUserLoggedIn({
+                        userLoggedIn({
                             accessToken: result.data.accessToken,
                             user: result.data.user,
                         })
@@ -33,7 +33,7 @@ export const studentAuthApi = apiSlice.injectEndpoints({
             },
         }),
 
-        studentLogin: builder.mutation({
+        login: builder.mutation({
             query: (data) => ({
                 url: "/login",
                 method: "POST",
@@ -43,7 +43,7 @@ export const studentAuthApi = apiSlice.injectEndpoints({
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 try {
                     const result = await queryFulfilled;
-                    if (result.data) {
+                    if (result.data.user) {
                         localStorage.setItem(
                             "auth",
                             JSON.stringify({
@@ -52,7 +52,7 @@ export const studentAuthApi = apiSlice.injectEndpoints({
                             })
                         );
                         dispatch(
-                            studentUserLoggedIn({
+                            userLoggedIn({
                                 accessToken: result.data.accessToken,
                                 user: result.data.user,
                             })
@@ -67,4 +67,4 @@ export const studentAuthApi = apiSlice.injectEndpoints({
     }),
 });
 
-export const { useRegisterMutation, useStudentLoginMutation } = studentAuthApi;
+export const { useRegisterMutation, useLoginMutation } = authApi;

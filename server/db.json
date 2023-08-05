@@ -6,9 +6,23 @@
       "name": "LWS Admin",
       "profile_pictue": "https://res.cloudinary.com/dqcsk8rsc/image/upload/v1620226433/learnwithsumit/1620226432.jpg",
       "id": 1
+    },
+    {
+      "email": "abdulkadirshohan@gmail.com",
+      "password": "$2a$10$uvwle.GTKsR/C8JCxjmhV.u96kbs7gV.1tfUfTwYEmUYdU1CDtorC",
+      "name": "RBS Tech LTD 2",
+      "role": "student",
+      "id": 2
+    },
+    {
+      "email": "abdulkadirshohan1@gmail.com",
+      "password": "$2a$10$NM7CNNbZ07ivCpKCJDoroeWKXTsLCyIxfKOCMbWuWkLT2b5YEXthm",
+      "name": "RBS Tech LTD 2",
+      "role": "student",
+      "id": 3
     }
   ],
-  "events":[
+  "events": [
     {
       "id": 1,
       "title": "Event 1",
