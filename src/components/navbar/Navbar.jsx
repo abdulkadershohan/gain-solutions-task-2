@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { userLoggedOut } from "../../features/auth/authSlice";
 import { Button } from "../../utils";
+const defaultImg = 'https://cdn-icons-png.flaticon.com/512/1246/1246314.png?w=740&t=st=1691230836~exp=1691231436~hmac=dbf1950a8b58ca6372ec7e118279fbeb4e041d3d9b8d2b1df89a96149dcdecaa'
 const navbardata = [
     {
         id: 1,
@@ -25,6 +26,8 @@ const navbardata = [
 export default function Navbar() {
     const dispatch = useDispatch()
     const [selected, setSelected] = React.useState(1)
+    const auth = JSON.parse(localStorage.getItem('auth'))
+
     const handleLogout = () => {
         dispatch(userLoggedOut())
         localStorage.removeItem('auth')
@@ -49,7 +52,8 @@ export default function Navbar() {
 
                 </div>
                 {/* profile image */}
-                <img src={logo} alt="profile_img" className="inline-block  h-8 w-8  md:h-10 md:w-10  rounded-full ring-1 md:ring-2 ring-blue-500" />
+                <img src={auth?.user?.profileImage ? auth.user.profileImage : defaultImg}
+                    alt="profile_img" className="inline-block  h-8 w-8  md:h-10 md:w-10  rounded-full ring-1 md:ring-2 ring-blue-500" />
 
 
             </div>

@@ -1,34 +1,12 @@
 {
   "users": [
     {
-      "email": "admin@learnwithsumit.com",
-      "password": "$2a$10$/TDPCTU28mFzKnSsW2pHSu512mpMKxLf8eiPbcTFLSNL87tbZBp3W",
-      "name": "LWS Admin",
-      "profile_pictue": "https://res.cloudinary.com/dqcsk8rsc/image/upload/v1620226433/learnwithsumit/1620226432.jpg",
-      "id": 1
-    },
-    {
       "email": "abdulkadirshohan@gmail.com",
-      "password": "$2a$10$uvwle.GTKsR/C8JCxjmhV.u96kbs7gV.1tfUfTwYEmUYdU1CDtorC",
-      "name": "RBS Tech LTD 2",
-      "role": "student",
-      "id": 2
-    },
-    {
-      "email": "abdulkadirshohan1@gmail.com",
-      "password": "$2a$10$NM7CNNbZ07ivCpKCJDoroeWKXTsLCyIxfKOCMbWuWkLT2b5YEXthm",
-      "name": "RBS Tech LTD 2",
-      "role": "student",
-      "id": 3
-    },
-    {
-      "email": "abdulkadirshoha1n@gmail.com",
-      "password": "$2a$10$DYjOd.OxflaiHfvjwaayiu53lJAgLLxMrxQfIuCAJ9AeNNoZR1T.e",
+      "password": "$2a$10$ZQ/ivZF5cyd/krGUIK3UQepelP4B/w2nip9Zl5rmqBwmeP95TSZpG",
       "name": "Abdul Kader",
-      "passwordConfirmation": "1234",
-      "profileImage": "1",
+      "profileImage": "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?w=740&t=st=1691230522~exp=1691231122~hmac=bdc28ba53f29c70ec86ce432a9151fb102a9390a826908e336bf01cd32ef53cf",
       "phoneNumber": "+8801766614798",
-      "id": 4
+      "id": 1
     }
   ],
   "events": [

@@ -20,7 +20,6 @@ export default function RegisterForm() {
             name,
             email,
             password,
-            passwordConfirmation,
             profileImage,
             phoneNumber
         }
