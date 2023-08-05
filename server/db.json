@@ -23,7 +23,9 @@
         "phoneNumber": "+8801766614798",
         "id": 1
       },
-      "attendees": [],
+      "attendees": [
+        
+      ],
       "id": 3
     },
     {
@@ -39,7 +41,18 @@
         "phoneNumber": "+8801766614798",
         "id": 1
       },
-      "attendees": [],
+      "attendees": [
+        {
+          "email": "abdulkadirshohan@gmail.com",
+          "name": "Abdul Kader",
+           "id":1
+        },
+        {
+          "email": "exmaple@gmail.com",
+          "name": "mr x",
+           "id":2
+        }
+      ],
       "id": 4
     }  
    

@@ -6,38 +6,14 @@ import { Button } from '../../utils';
 
 export default function ModalM({ data, }) {
     const [open, setOpen] = useState(false);
-
+    const { attendees } = data || {}
     const modalStyles = {
         modal: {
             maxWidth: '800px', // Set your desired width here
         },
     };
-    // const data = {
-    //     "id": 1,
-    //     "title": "Event 1",
-    //     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati earum ab ipsa ea cupiditate molestias nulla eos suscipit hic esse, labore tenetur ducimus reiciendis voluptates fugiat quam voluptate? Debitis dolorum fuga omnis nostrum accusamus illum, sint maiores temporibus vitae rem fugiat nobis error placeat esse architecto repellendus! Asperiores sed fugit explicabo dolores, aliquid alias ex quam ratione recusandae ipsum, voluptatem voluptatum soluta maiores, repellat beatae dicta aspernatur cum magni. Possimus voluptatum commodi, saepe minima eum pariatur asperiores architecto necessitatibus repellat fugit consequatur, distinctio nesciunt! Iure ipsam assumenda, sed quos, quae sequi officia, voluptate minus reprehenderit quam atque voluptates eius saepe?",
-    //     "start_date": "2021-05-05T00:00:00.000Z",
-    //     "end_date": "2021-05-05T00:00:00.000Z",
-    //     "location": "Dhaka, Bangladesh",
-    //     "createdAt": "2021-05-05T00:00:00.000Z",
-    //     "updatedAt": "2021-05-05T00:00:00.000Z",
-    //     "createdBy": 1
-    // }
-
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
-    const attendance = [
-        {
-            id: 1,
-            name: 'name',
-            email: 'email',
-        },
-        {
-            id: 2,
-            name: 'name',
-            email: 'email',
-        }
-    ]
 
     return (
         <div>
@@ -125,7 +101,7 @@ export default function ModalM({ data, }) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {attendance.map((item) => (
+                                {attendees.map((item) => (
                                     <tr key={item.id}>
                                         <td className="border border-black ...">{item.name}</td>
                                         <td className="border border-black ...">{item.email}</td>
