@@ -2,9 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../features/auth/authApi";
 import { Button, Input } from "../../utils";
+import Toastify from "../../utils/Toastify";
 
 export default function LoginForm() {
-    const [login, { isLoading, isError, isSuccess, error }] = useLoginMutation()
+    const [login, { isLoading, isError, isSuccess }] = useLoginMutation()
     const navigate = useNavigate()
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
@@ -17,11 +18,15 @@ export default function LoginForm() {
         login(body)
     }
     React.useEffect(() => {
-        alert('Login Success')
-    }, [isSuccess])
-    React.useEffect(() => {
-        console.log(error)
-    }, [isError])
+        if (isSuccess) {
+            Toastify({
+                type: "success",
+                message: "Login Successful",
+            });
+            navigate('/')
+        }
+    }, [isSuccess, navigate])
+
     return (
         <form
             onSubmit={handleSubmit}

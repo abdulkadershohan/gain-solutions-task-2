@@ -29,7 +29,7 @@ export default function UserRoutes() {
                     }
                 />
 
-                <Route path="/home" element={<Home />} />
+                <Route path="/" element={<Home />} />
             </Routes>
         </Router>
     )

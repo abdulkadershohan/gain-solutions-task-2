@@ -1,9 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useRegisterMutation } from "../../features/auth/authApi";
 import { Button, Input } from "../../utils";
+import Toastify from "../../utils/Toastify";
 
 
 export default function RegisterForm() {
+    const [register, { isLoading, isSuccess, isError, error }] = useRegisterMutation()
     const navigate = useNavigate()
     const [name, setName] = React.useState('')
     const [email, setEmail] = React.useState('')
@@ -21,8 +24,25 @@ export default function RegisterForm() {
             profileImage,
             phoneNumber
         }
-        console.log(body)
+        register(body)
     }
+    React.useEffect(() => {
+        if (isSuccess) {
+            Toastify({
+                type: "success",
+                message: "Registration Successful"
+            })
+        }
+    }, [isSuccess, navigate])
+    React.useEffect(() => {
+        if (isError) {
+            Toastify({
+                type: "error",
+                message: error.data
+            })
+        }
+    }, [isError, error])
+
     return (
         <form
             onSubmit={handleSubmit}
@@ -84,6 +104,7 @@ export default function RegisterForm() {
                 <Button
                     type="submit"
                     text="Create Account"
+                    disabled={isLoading}
                 />
                 <button className="text-sm font-semibold leading-6 text-gray-900"
                     onClick={() => navigate('/login')}

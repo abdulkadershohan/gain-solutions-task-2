@@ -20,6 +20,15 @@
       "name": "RBS Tech LTD 2",
       "role": "student",
       "id": 3
+    },
+    {
+      "email": "abdulkadirshoha1n@gmail.com",
+      "password": "$2a$10$DYjOd.OxflaiHfvjwaayiu53lJAgLLxMrxQfIuCAJ9AeNNoZR1T.e",
+      "name": "Abdul Kader",
+      "passwordConfirmation": "1234",
+      "profileImage": "1",
+      "phoneNumber": "+8801766614798",
+      "id": 4
     }
   ],
   "events": [

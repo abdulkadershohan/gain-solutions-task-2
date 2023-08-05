@@ -1,10 +1,8 @@
 import React from "react";
 import logo from "../../../assets/images/logo.png";
-import { Button, Input } from "../../../utils";
 import LoginForm from "../../../components/form/LoginForm";
 
 export default function Login() {
-
 
     return (
         <section className="container-md  bg-[#f1f1f1]">
