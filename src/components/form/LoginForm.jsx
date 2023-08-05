@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Input } from "../../utils";
 
 export default function LoginForm() {
+    const navigate = useNavigate()
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
     const handleSubmit = (e) => {
@@ -38,7 +40,9 @@ export default function LoginForm() {
                     type="submit"
                     text="Login"
                 />
-                <button className="text-sm font-semibold leading-6 text-gray-900">
+                <button className="text-sm font-semibold leading-6 text-gray-900"
+                    onClick={() => navigate('/registration')}
+                >
                     Don't have an account? <span className="text-indigo-600 hover:underline">Sign up</span>
                     <span aria-hidden="true">→</span></button>
 

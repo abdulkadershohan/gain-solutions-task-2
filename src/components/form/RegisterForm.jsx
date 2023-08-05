@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Input } from "../../utils";
 
+
 export default function RegisterForm() {
+    const navigate = useNavigate()
     const [name, setName] = React.useState('')
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
@@ -82,11 +85,13 @@ export default function RegisterForm() {
                     type="submit"
                     text="Create Account"
                 />
-                <button className="text-sm font-semibold leading-6 text-gray-900">
+                <button className="text-sm font-semibold leading-6 text-gray-900"
+                    onClick={() => navigate('/login')}
+                >
                     Already have an account? <span className="text-indigo-600 hover:underline">Login</span>
                     <span aria-hidden="true">→</span></button>
 
             </div>
-        </form>
+        </form >
     )
 }

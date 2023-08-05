@@ -10,7 +10,7 @@ export default function UserRoutes() {
             <Routes>
 
                 <Route
-                    path="/"
+                    path="/login"
                     element={
                         // <StudentPublicRoute >
                         //     <StudentLogin />
