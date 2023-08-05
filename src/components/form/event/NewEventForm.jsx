@@ -8,8 +8,6 @@ import Toastify from "../../../utils/Toastify";
 export default function NewEventForm() {
     const [createEvent, { isLoading, isSuccess, isError, error }] = useCreateEventMutation()
     const auth = useSelector((state) => state.auth);
-    console.log(auth)
-
     const navigate = useNavigate()
     const [title, setTitle] = useState('')
     const [description, setDdescription] = useState('')
@@ -26,13 +24,19 @@ export default function NewEventForm() {
     }
     React.useEffect(() => {
         if (isSuccess) {
+            setTitle('')
+            setDdescription('')
+            setStartDate('')
+            setEndDate('')
+            setLocation('')
             Toastify({
                 type: "success",
                 message: "Event Created"
             })
-            // navigate('/')
+            navigate('/')
         }
     }, [isSuccess, navigate])
+
     React.useEffect(() => {
         if (isError) {
             Toastify({
@@ -59,6 +63,7 @@ export default function NewEventForm() {
                 className="mt-2 bg-[#ff3366] text-white px-4 py-2 rounded-md"
                 text={'Create'}
                 type='submit'
+                disabled={isLoading}
             />
         </form>
     )
