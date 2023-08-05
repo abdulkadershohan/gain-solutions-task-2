@@ -23,13 +23,11 @@
         "phoneNumber": "+8801766614798",
         "id": 1
       },
-      "attendees": [
-        
-      ],
+      "attendees": [],
       "id": 3
     },
     {
-      "title": "Weeding",
+      "title": "Weeding 11",
       "description": "Tailwind lets you conditionally apply utility classes in different states using variant modifiers. For example, use hover:table-fixed to only apply the table-fixed utility on hover.",
       "start_date": "2023-08-31T17:25",
       "end_date": "2023-08-25T17:25",
@@ -45,16 +43,16 @@
         {
           "email": "abdulkadirshohan@gmail.com",
           "name": "Abdul Kader",
-           "id":1
+          "id": 1
         },
         {
           "email": "exmaple@gmail.com",
           "name": "mr x",
-           "id":2
+          "id": 2
         }
       ],
-      "id": 4
-    }  
-   
+      "id": 4,
+      "user_id": 1
+    }
   ]
 }

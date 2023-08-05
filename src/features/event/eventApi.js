@@ -42,7 +42,41 @@ export const eventApi = apiSlice.injectEndpoints({
                 }
             },
         }),
+        editEvent: builder.mutation({
+            query: ({ id, data }) => ({
+                url: `/events/${id}`,
+                method: "PUT",
+                body: data
+            }),
+            // invalidate the get video by id query when we edit a video
+            // invalidatesTags: (result, error, arg) => [
+            //     'quiz',
+            //     { type: 'quiz', id: arg.id }
+            // ],
+            //  pessimistic update 
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                try {
+                    const event = await queryFulfilled;
+                    // pessimistically update the cache
+                    if (event?.data?.id) {
+                        dispatch(
+                            apiSlice.util.updateQueryData(
+                                "getAllEvents",
+                                undefined,
+                                (draft) => {
+                                    const draftEvent = draft.find((item) => item.id == arg.id);
+                                    draftEvent = arg.data;
+
+                                }
+                            )
+                        );
+                    }
+                }
+                catch (err) {
+                }
+            }
+        }),
 
     }),
 });
-export const { useCreateEventMutation, useGetAllEventsQuery, useGetEventsByIdQuery } = eventApi;
+export const { useCreateEventMutation, useGetAllEventsQuery, useGetEventsByIdQuery, useEditEventMutation } = eventApi;

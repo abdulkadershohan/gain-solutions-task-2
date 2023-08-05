@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetEventsByIdQuery } from "../../../features/event/eventApi";
+import { useEditEventMutation, useGetEventsByIdQuery } from "../../../features/event/eventApi";
 import { Button, Input, Loading } from "../../../utils";
 import Toastify from "../../../utils/Toastify";
 
 export default function EditEventFrom() {
     const param = useParams()
     const { data: singleData, isLoading, isSuccess, isError, error } = useGetEventsByIdQuery(param?.id)
+    const [editEvent, { isLoading: editIsloading, isSuccess: editIsSuccess, isError: editIsError, error: editError }] = useEditEventMutation()
     const auth = useSelector((state) => state.auth);
     const navigate = useNavigate()
     const [title, setTitle] = useState('')
@@ -18,11 +19,18 @@ export default function EditEventFrom() {
     const handleSubmit = (e) => {
         e.preventDefault()
         const body = {
-            title, description, start_date, end_date, location,
-            createdBy: auth?.user,
-            attendees: []
+            ...singleData,
+            title,
+            description,
+            start_date,
+            end_date,
+            location,
+            user_id: auth?.user?.id
         }
-        //  createEvent(body)
+        editEvent({
+            id: param?.id,
+            data: body
+        })
     }
     React.useEffect(() => {
         if (isSuccess) {
@@ -44,6 +52,26 @@ export default function EditEventFrom() {
 
         }
     }, [isError, error])
+
+    // put data to server
+    React.useEffect(() => {
+        if (editIsSuccess) {
+            Toastify({
+                type: "success",
+                message: "Event updated successfully"
+            })
+            // navigate('/')
+        }
+        if (editIsError) {
+            Toastify({
+                type: "error",
+                message: editError.data
+            })
+            console.log(editError)
+        }
+
+
+    }, [editIsSuccess, editIsError, editError])
 
     // deside what to render
     let content = null
