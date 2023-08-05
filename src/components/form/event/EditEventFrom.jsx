@@ -56,6 +56,11 @@ export default function EditEventFrom() {
     // put data to server
     React.useEffect(() => {
         if (editIsSuccess) {
+            setTitle('')
+            setDdescription('')
+            setStartDate('')
+            setEndDate('')
+            setLocation('')
             Toastify({
                 type: "success",
                 message: "Event updated successfully"

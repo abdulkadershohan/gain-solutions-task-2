@@ -13,7 +13,7 @@ export const eventApi = apiSlice.injectEndpoints({
                 url: `/events/${id}`,
                 method: 'GET',
             }),
-            //  providesTags: (result, error, arg) => [{ type: 'video', id: arg }]
+            providesTags: (result, error, arg) => [{ type: 'event', id: arg }]
         }),
         createEvent: builder.mutation({
             query: (body) => ({
@@ -49,10 +49,10 @@ export const eventApi = apiSlice.injectEndpoints({
                 body: data
             }),
             // invalidate the get video by id query when we edit a video
-            // invalidatesTags: (result, error, arg) => [
-            //     'quiz',
-            //     { type: 'quiz', id: arg.id }
-            // ],
+            invalidatesTags: (result, error, arg) => [
+                'event',
+                { type: 'event', id: arg.id }
+            ],
             //  pessimistic update 
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 try {
@@ -64,9 +64,13 @@ export const eventApi = apiSlice.injectEndpoints({
                                 "getAllEvents",
                                 undefined,
                                 (draft) => {
-                                    const draftEvent = draft.find((item) => item.id == arg.id);
-                                    draftEvent = arg.data;
-
+                                    // find and replace the edited event
+                                    const draftQuiz = draft.find((as) => as.id == arg.id);
+                                    draftQuiz.title = arg?.data?.title;
+                                    draftQuiz.description = arg?.data?.description;
+                                    draftQuiz.start_date = arg?.data?.start_date;
+                                    draftQuiz.end_date = arg?.data?.end_date;
+                                    draftQuiz.location = arg?.data?.location;
                                 }
                             )
                         );
@@ -74,7 +78,7 @@ export const eventApi = apiSlice.injectEndpoints({
                 }
                 catch (err) {
                 }
-            }
+            },
         }),
 
     }),

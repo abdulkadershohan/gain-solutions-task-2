@@ -13,8 +13,8 @@
     {
       "title": "Dream Events",
       "description": "Tailwind lets you conditionally apply utility classes in different states using variant modifiers. For example, use hover:table-fixed to only apply the table-fixed utility on hover.",
-      "start_date": "2023-08-05T21:24",
-      "end_date": "2023-08-21T17:24",
+      "start_date": "2023-08-01T21:24",
+      "end_date": "2023-08-17T17:24",
       "location": "Dhaka",
       "createdBy": {
         "email": "abdulkadirshohan@gmail.com",
@@ -24,7 +24,8 @@
         "id": 1
       },
       "attendees": [],
-      "id": 3
+      "id": 3,
+      "user_id": 1
     },
     {
       "title": "Weeding 11",
