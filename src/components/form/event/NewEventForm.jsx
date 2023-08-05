@@ -1,7 +1,16 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useCreateEventMutation } from "../../../features/event/eventApi";
 import { Button, Input } from "../../../utils";
+import Toastify from "../../../utils/Toastify";
 
 export default function NewEventForm() {
+    const [createEvent, { isLoading, isSuccess, isError, error }] = useCreateEventMutation()
+    const auth = useSelector((state) => state.auth);
+    console.log(auth)
+
+    const navigate = useNavigate()
     const [title, setTitle] = useState('')
     const [description, setDdescription] = useState('')
     const [start_date, setStartDate] = useState('')
@@ -10,10 +19,30 @@ export default function NewEventForm() {
     const handleSubmit = (e) => {
         e.preventDefault()
         const body = {
-            title, description, start_date, end_date, location
+            title, description, start_date, end_date, location,
+            createdBy: auth?.user
         }
-        console.log(body)
+        createEvent(body)
     }
+    React.useEffect(() => {
+        if (isSuccess) {
+            Toastify({
+                type: "success",
+                message: "Event Created"
+            })
+            // navigate('/')
+        }
+    }, [isSuccess, navigate])
+    React.useEffect(() => {
+        if (isError) {
+            Toastify({
+                type: "error",
+                message: error.data
+            })
+            console.log(error)
+
+        }
+    }, [isError, error])
     return (
         <form onSubmit={handleSubmit}
             className="w-full md:w-1/2 px-4"

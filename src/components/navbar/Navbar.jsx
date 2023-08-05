@@ -14,7 +14,7 @@ const navbardata = [
     {
         id: 2,
         title: 'Create Event',
-        url: '/event'
+        url: '/new-event'
     },
     {
         id: 3,

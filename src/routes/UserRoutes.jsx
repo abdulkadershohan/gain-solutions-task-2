@@ -41,7 +41,7 @@ export default function UserRoutes() {
                 />
 
                 <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
-                <Route path="/event" element={<PrivateRoute><NewEvents /></PrivateRoute>} />
+                <Route path="/new-event" element={<PrivateRoute><NewEvents /></PrivateRoute>} />
                 <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
             </Routes>
         </Router>
