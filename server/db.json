@@ -11,11 +11,11 @@
   ],
   "events": [
     {
-      "title": "1",
-      "description": "1",
-      "start_date": "2023-08-04T16:38",
-      "end_date": "2023-08-23T16:38",
-      "location": "1",
+      "title": "Dream Events",
+      "description": "Tailwind lets you conditionally apply utility classes in different states using variant modifiers. For example, use hover:table-fixed to only apply the table-fixed utility on hover.",
+      "start_date": "2023-08-05T21:24",
+      "end_date": "2023-08-21T17:24",
+      "location": "Dhaka",
       "createdBy": {
         "email": "abdulkadirshohan@gmail.com",
         "name": "Abdul Kader",
@@ -23,14 +23,15 @@
         "phoneNumber": "+8801766614798",
         "id": 1
       },
-      "id": 1
+      "attendees": [],
+      "id": 3
     },
     {
-      "title": "asad",
-      "description": "ad",
-      "start_date": "2023-08-05T16:41",
-      "end_date": "2023-09-07T16:41",
-      "location": "qqeww",
+      "title": "Weeding",
+      "description": "Tailwind lets you conditionally apply utility classes in different states using variant modifiers. For example, use hover:table-fixed to only apply the table-fixed utility on hover.",
+      "start_date": "2023-08-31T17:25",
+      "end_date": "2023-08-25T17:25",
+      "location": "Mirpur-1216",
       "createdBy": {
         "email": "abdulkadirshohan@gmail.com",
         "name": "Abdul Kader",
@@ -38,7 +39,9 @@
         "phoneNumber": "+8801766614798",
         "id": 1
       },
-      "id": 2
-    }
+      "attendees": [],
+      "id": 4
+    }  
+   
   ]
 }

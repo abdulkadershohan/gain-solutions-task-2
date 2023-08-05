@@ -1,26 +1,28 @@
+import moment from 'moment';
 import React, { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import { Button } from '../../utils';
 
-export default function ModalM() {
+export default function ModalM({ data, }) {
+    const [open, setOpen] = useState(false);
+
     const modalStyles = {
         modal: {
             maxWidth: '800px', // Set your desired width here
         },
     };
-    const data = {
-        "id": 1,
-        "title": "Event 1",
-        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati earum ab ipsa ea cupiditate molestias nulla eos suscipit hic esse, labore tenetur ducimus reiciendis voluptates fugiat quam voluptate? Debitis dolorum fuga omnis nostrum accusamus illum, sint maiores temporibus vitae rem fugiat nobis error placeat esse architecto repellendus! Asperiores sed fugit explicabo dolores, aliquid alias ex quam ratione recusandae ipsum, voluptatem voluptatum soluta maiores, repellat beatae dicta aspernatur cum magni. Possimus voluptatum commodi, saepe minima eum pariatur asperiores architecto necessitatibus repellat fugit consequatur, distinctio nesciunt! Iure ipsam assumenda, sed quos, quae sequi officia, voluptate minus reprehenderit quam atque voluptates eius saepe?",
-        "start_date": "2021-05-05T00:00:00.000Z",
-        "end_date": "2021-05-05T00:00:00.000Z",
-        "location": "Dhaka, Bangladesh",
-        "createdAt": "2021-05-05T00:00:00.000Z",
-        "updatedAt": "2021-05-05T00:00:00.000Z",
-        "createdBy": 1
-    }
-    const [open, setOpen] = useState(false);
+    // const data = {
+    //     "id": 1,
+    //     "title": "Event 1",
+    //     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati earum ab ipsa ea cupiditate molestias nulla eos suscipit hic esse, labore tenetur ducimus reiciendis voluptates fugiat quam voluptate? Debitis dolorum fuga omnis nostrum accusamus illum, sint maiores temporibus vitae rem fugiat nobis error placeat esse architecto repellendus! Asperiores sed fugit explicabo dolores, aliquid alias ex quam ratione recusandae ipsum, voluptatem voluptatum soluta maiores, repellat beatae dicta aspernatur cum magni. Possimus voluptatum commodi, saepe minima eum pariatur asperiores architecto necessitatibus repellat fugit consequatur, distinctio nesciunt! Iure ipsam assumenda, sed quos, quae sequi officia, voluptate minus reprehenderit quam atque voluptates eius saepe?",
+    //     "start_date": "2021-05-05T00:00:00.000Z",
+    //     "end_date": "2021-05-05T00:00:00.000Z",
+    //     "location": "Dhaka, Bangladesh",
+    //     "createdAt": "2021-05-05T00:00:00.000Z",
+    //     "updatedAt": "2021-05-05T00:00:00.000Z",
+    //     "createdBy": 1
+    // }
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
@@ -39,7 +41,12 @@ export default function ModalM() {
 
     return (
         <div>
-            <button onClick={onOpenModal}>Open modal</button>
+            <Button
+                onClick={onOpenModal}
+                className='bg-red-500 text-white px-4 py-2 rounded-md'
+            >
+                View Details
+            </Button>
             <Modal open={open} onClose={onCloseModal} center styles={modalStyles}>
                 <div
                     className='p-2 flex flex-col h-screen w-full '
@@ -97,14 +104,14 @@ export default function ModalM() {
                         >
                             Event Start Date :
                         </h4>
-                        <p className='text-xl font-normal '>{data.start_date}</p>
+                        <p className='text-xl font-normal '>{moment(data.start_date).format('DD MMM YYYY hh:mm A')}</p>
                         <h4
                             className='text-2xl font-bold font-play border-b-2 border-black'
 
                         >
                             Event End Date :
                         </h4>
-                        <p className='text-xl font-normal '>{data.end_date}</p>
+                        <p className='text-xl font-normal '>{moment(data.end_date).format('DD MMM YYYY hh:mm A')}</p>
                     </div>
 
                     {/* attendance list table  */}

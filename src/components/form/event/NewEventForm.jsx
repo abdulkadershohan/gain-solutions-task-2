@@ -18,7 +18,8 @@ export default function NewEventForm() {
         e.preventDefault()
         const body = {
             title, description, start_date, end_date, location,
-            createdBy: auth?.user
+            createdBy: auth?.user,
+            attendees: []
         }
         createEvent(body)
     }
