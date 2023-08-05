@@ -1,4 +1,5 @@
 import React from "react";
+import ModalM from "../../components/modal/Modal";
 import { Button } from "../../utils";
 
 export default function EventList() {
@@ -140,7 +141,7 @@ export default function EventList() {
                 </nav>
             </div>
 
-
+            <ModalM />
 
         </div>
     )
