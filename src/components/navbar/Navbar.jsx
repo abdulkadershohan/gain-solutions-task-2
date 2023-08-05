@@ -31,7 +31,9 @@ export default function Navbar() {
     }
     return (
         <div
-            className="container-md  bg-white shadow-md"
+            className="container-md  bg-white shadow-md
+            sticky top-0 z-50
+            "
         >
             {/* navbar section */}
             <div
@@ -57,7 +59,7 @@ export default function Navbar() {
                 className="flex justify-between items-center py-4 px-4 md:px-8 gap-2 bg-[#f1f1f1] "
             >
                 <div
-                    className="flex gap-2 items-center "
+                    className="flex flex-col md:flex-row gap-2 items-center "
                 >
                     {
                         navbardata.map(nav => (
