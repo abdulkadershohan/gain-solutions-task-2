@@ -1,9 +1,10 @@
 import moment from "moment/moment";
 import React from "react";
 import { useSelector } from "react-redux";
+import ChangeStatus from "../../components/form/event/ChangeStatus";
 import ModalM from "../../components/modal/Modal";
 import { useGetAllEventsQuery } from "../../features/event/eventApi";
-import { Button, Loading } from "../../utils";
+import { Loading } from "../../utils";
 
 export default function EventList() {
     const { data: eventListData, isLoading, isError, error } = useGetAllEventsQuery()
@@ -59,16 +60,42 @@ export default function EventList() {
                                 }
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-white">
-                                <Button
-                                    className="px-2  pt-1 rounded-lg bg-green-500 hover:bg-green-600 text-white"
+                                {/* <Button
+                                    className={`
+                                        px-2  pt-1 rounded-lg
+                                        ${item.attendees?.find(item => item.user_id === auth.user.id) ? 'bg-red-500' : 'bg-green-500'}
+                                        ${item.attendees?.find(item => item.user_id === auth.user.id) ? 'hover:bg-red-600' : 'hover:bg-green-600'}
+                                       text-white
+                                    `}
+                                    title={item.attendees?.find(item => item.user_id === auth.user.id) ? 'Change to not Going' : 'Change to Going'}
                                 >
                                     {
                                         //  auth.user.id
-                                        item.attendees?.find(item => item.user_id === auth.user.id) ? 'Attending' : 'RSVP'
+                                        item.attendees?.find(item => item.user_id === auth.user.id) ? 'Going' : 'Not Go'
 
 
                                     }
-                                </Button>
+                                </Button> */}
+                                {/* drop down menu  */}
+                                {/* <div className="relative inline-block text-left">
+                                    <div>
+                                        <button type="button" className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-2 py-1 bg-gray-800 text-sm font-medium text-gray-400 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
+                                            {
+                                                item.attendees?.find(item => item.user_id === auth.user.id) ? 'Going' : 'Not Go'
+                                            }
+                                           
+                                            <svg className="-mr-1 ml-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+
+                                                <path fillRule="evenodd" d="M5.293 6.707a1 1 0 010 1.414L2.414 11H17a1 1 0 110 2H2.414l2.879 2.879a1 1 0 11-1.414 1.414l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 0z" clipRule="evenodd" />
+
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div> */}
+                                <ChangeStatus
+                                    data={item}
+                                />
+
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-white">
                                 <ModalM
@@ -94,7 +121,7 @@ export default function EventList() {
                     </li>
                 </ul>
             </nav>
-        </div>
+        </div >
     }
     return (
         <div

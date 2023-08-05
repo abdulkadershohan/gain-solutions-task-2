@@ -80,7 +80,39 @@ export const eventApi = apiSlice.injectEndpoints({
                 }
             },
         }),
+        changeStatusEvent: builder.mutation({
+            query: ({ id, data }) => ({
+                url: `/events/${id}`,
+                method: "PUT",
+                body: data
+            }),
+            // invalidate the get video by id query when we edit a video
+
+            //  pessimistic update 
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                try {
+                    const event = await queryFulfilled;
+                    // pessimistically update the cache
+                    if (event?.data?.id) {
+                        dispatch(
+                            apiSlice.util.updateQueryData(
+                                "getAllEvents",
+                                undefined,
+                                (draft) => {
+                                    // find and replace the edited event
+                                    const draftQuiz = draft.find((as) => as.id == arg.id);
+                                    draftQuiz.attendees = arg?.data?.attendees;
+
+                                }
+                            )
+                        );
+                    }
+                }
+                catch (err) {
+                }
+            },
+        }),
 
     }),
 });
-export const { useCreateEventMutation, useGetAllEventsQuery, useGetEventsByIdQuery, useEditEventMutation } = eventApi;
+export const { useCreateEventMutation, useGetAllEventsQuery, useGetEventsByIdQuery, useEditEventMutation, useChangeStatusEventMutation } = eventApi;
