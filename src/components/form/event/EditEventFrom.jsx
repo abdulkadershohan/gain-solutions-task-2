@@ -60,7 +60,7 @@ export default function EditEventFrom() {
                 type: "success",
                 message: "Event updated successfully"
             })
-            // navigate('/')
+            navigate('/')
         }
         if (editIsError) {
             Toastify({
@@ -70,8 +70,7 @@ export default function EditEventFrom() {
             console.log(editError)
         }
 
-
-    }, [editIsSuccess, editIsError, editError])
+    }, [editIsSuccess, editIsError, editError, navigate])
 
     // deside what to render
     let content = null
@@ -97,7 +96,7 @@ export default function EditEventFrom() {
                 className="mt-2 bg-[#ff3366] text-white px-4 py-2 rounded-md"
                 text={'Create'}
                 type='submit'
-                disabled={isLoading}
+                disabled={isLoading || editIsloading}
             />
         </form>
     }
