@@ -1,14 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { setSearchFilter } from "../../features/filterSearch/FilterSearchSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setClearSearch, setSearchFilter } from "../../features/filterSearch/FilterSearchSlice";
 import { Button, Input } from "../../utils";
 
 export default function Search() {
     const dispatch = useDispatch()
-    const [search, setSearch] = React.useState('')
-    const [loaction, setLocation] = React.useState('')
-    const [startDate, setStartDate] = React.useState('')
-    const [endDate, setEndDate] = React.useState('')
+    const filterSearch = useSelector(state => state.filterSearch)
+
+    const [search, setSearch] = React.useState(filterSearch?.text)
+    const [loaction, setLocation] = React.useState(filterSearch?.location)
+    const [startDate, setStartDate] = React.useState(filterSearch?.start_date)
+    const [endDate, setEndDate] = React.useState(filterSearch?.end_date)
     const [isFilter, setIsFilter] = React.useState(false)
 
     const handleSubmit = () => {
@@ -19,6 +21,13 @@ export default function Search() {
             end_date: endDate
         }))
 
+    }
+    const handleClearFilter = () => {
+        setSearch('')
+        setLocation('')
+        setStartDate('')
+        setEndDate('')
+        dispatch(setClearSearch())
     }
     return <div
         className="pl-0 pr-4 py-4 md:p-8 "
@@ -97,6 +106,7 @@ export default function Search() {
                     isFilter && <Button
                         text={'Clear Filter'}
                         className="mt-2 bg-[#ff3366] text-white px-4 py-[0.4rem] md:py-2 rounded-md font-play"
+                        onClick={handleClearFilter}
 
                     />
                 }

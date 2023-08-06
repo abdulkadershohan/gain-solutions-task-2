@@ -14,6 +14,9 @@ export default function EventList() {
     // const [eventListData, setTableData] = React.useState([])
     const auth = useSelector(state => state.auth)
     const tableRow = ['Title', 'Location', 'Start Date', 'End Date', 'RSVP', 'Show Details', 'Action']
+    // search by title
+    const filterSearch = useSelector(state => state.filterSearch)
+    console.log(filterSearch);
 
     // deside what to render
     let content = null
