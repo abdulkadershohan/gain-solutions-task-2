@@ -1,6 +1,6 @@
 {
-  "name": "lws-json-server-todos",
-  "description": "Example in memory todos api with json-server by Learn with Sumit",
+  "name": "dream-events",
+  "description": "Dream Events database ",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,6 @@
     "json-server-auth": "^2.1.0"
   },
   "keywords": [],
-  "author": "Sumit Saha, Learn with Sumit",
+  "author": "MD Abdul Kader",
   "license": "ISC"
 }

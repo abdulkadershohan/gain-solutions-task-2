@@ -42,9 +42,10 @@ export default function Search({ setPage }) {
                 <Input
                     className='font-jose p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent '
                     type="text"
-                    placeholder="Search"
+                    placeholder="Search by Title"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
+
                 />
             </div>
             <Button
