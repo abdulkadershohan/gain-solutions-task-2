@@ -33,9 +33,3 @@ Runs the server.\
 Open [http://localhost:9000](http://localhost:9000) to view database and api url in your browser.
 
 You may also see any lint errors in the console.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
