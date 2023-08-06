@@ -7,7 +7,7 @@ export default function Login() {
     return (
         <section className="container-md  bg-[#f1f1f1]">
             <div
-                className="flex flex-col h-screen w-screen justify-center items-center"
+                className="flex flex-col h-screen w-screen mx-auto max-w-screen-xl  justify-center items-center bg-[#fff]"
             >
                 <div
                     className="flex gap-2 items-center pb-4"

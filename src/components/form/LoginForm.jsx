@@ -30,7 +30,8 @@ export default function LoginForm() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="w-full md:w-1/2 px-4">
+            className="w-full md:w-1/2 px-4"
+        >
             <Input
                 placeholder={'Enter your email'}
                 label={'Email'}
@@ -64,6 +65,6 @@ export default function LoginForm() {
                     <span aria-hidden="true">→</span></button>
 
             </div>
-        </form>
+        </form >
     )
 }
