@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 const UserRoutes = React.lazy(() => import("./routes/UserRoutes"));

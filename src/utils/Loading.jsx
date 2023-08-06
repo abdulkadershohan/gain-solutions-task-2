@@ -8,8 +8,8 @@ function Loading({ type }) {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "transparent",
-        width: "100%",
-        height: "100vh",
+        // width: "100%",
+        // height: "100vh",
         margin: "0 auto",
     };
     if (type === 'fatch') {
