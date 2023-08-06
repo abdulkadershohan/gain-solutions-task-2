@@ -27,6 +27,22 @@ export default function EditEventFrom() {
             location,
             user_id: auth?.user?.id
         }
+        // end date cant be grater then start date
+        if (new Date(start_date) > new Date(end_date)) {
+            Toastify({
+                type: "error",
+                message: "Can finish before the event starts "
+            })
+            return
+        }
+        // location at least 4 characters
+        if (location.length < 4) {
+            Toastify({
+                type: "error",
+                message: "Location must be more than 4 characters"
+            })
+            return
+        }
         editEvent({
             id: param?.id,
             data: body
