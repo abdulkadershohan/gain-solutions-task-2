@@ -3,9 +3,15 @@ import EventList from "../../sections/hero/EventList";
 import Search from "../../sections/hero/Search";
 
 export default function Home() {
+    const [page, setPage] = React.useState(1)
     return <>
-        <Search />
-        <EventList />
+        <Search
+            setPage={setPage}
+        />
+        <EventList
+            page={page}
+            setPage={setPage}
+        />
 
     </>
 }

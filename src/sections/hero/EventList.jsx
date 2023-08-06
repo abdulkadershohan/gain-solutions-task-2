@@ -7,16 +7,32 @@ import ModalM from "../../components/modal/Modal";
 import { useGetAllEventsQuery } from "../../features/event/eventApi";
 import { Button, Loading } from "../../utils";
 
-export default function EventList() {
+export default function EventList({ page, setPage }) {
     const navigate = useNavigate()
-    const [page, setPage] = React.useState(1)
     const { data: tableData, isLoading, isError, error } = useGetAllEventsQuery(page)
     // const [eventListData, setTableData] = React.useState([])
     const auth = useSelector(state => state.auth)
     const tableRow = ['Title', 'Location', 'Start Date', 'End Date', 'RSVP', 'Show Details', 'Action']
     // search by title
     const filterSearch = useSelector(state => state.filterSearch)
-    console.log(filterSearch);
+    const data = tableData?.filter(item => item?.title?.toLowerCase().includes(filterSearch.text.toLowerCase()))
+    // search by location
+    const dataLocation = data?.filter(item => item?.location?.toLowerCase().includes(filterSearch.location.toLowerCase()))
+
+
+    // filter by date range start_date and end_date 
+    const filteredData = dataLocation?.filter(item => {
+        if (filterSearch.start_date && filterSearch.end_date) {
+            return moment(item?.start_date).isBetween(filterSearch.start_date, filterSearch.end_date)
+        }
+        if (filterSearch.start_date && !filterSearch.end_date) {
+            return moment(item?.start_date).isSameOrAfter(filterSearch.start_date)
+        }
+        if (!filterSearch.start_date && filterSearch.end_date) {
+            return moment(item?.start_date).isSameOrBefore(filterSearch.end_date)
+        }
+        return item
+    })
 
     // deside what to render
     let content = null
@@ -26,10 +42,10 @@ export default function EventList() {
     if (!isLoading && isError) {
         content = <p>{error.data}</p>
     }
-    if (!isLoading && !isError && tableData?.length === 0) {
+    if (!isLoading && !isError && filteredData?.length === 0) {
         content = <p>No Event Found</p>
     }
-    if (!isLoading && !isError && tableData?.length > 0) {
+    if (!isLoading && !isError && filteredData?.length > 0) {
         content = <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left  text-gray-400">
                 <thead className="text-xs uppercase bg-gray-700 text-gray-400">
@@ -46,7 +62,7 @@ export default function EventList() {
                 </thead>
                 <tbody>
                     {
-                        tableData.map((item, index) => <tr
+                        filteredData.map((item, index) => <tr
                             key={Math.random()}
                             className={`${index % 2 === 0 ? ' bg-gray-800' : 'bg-gray-900'} border-b border-gray-700  hover:bg-gray-600 `}
                         >

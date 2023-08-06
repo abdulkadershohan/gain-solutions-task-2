@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setClearSearch, setSearchFilter } from "../../features/filterSearch/FilterSearchSlice";
 import { Button, Input } from "../../utils";
 
-export default function Search() {
+export default function Search({ setPage }) {
     const dispatch = useDispatch()
     const filterSearch = useSelector(state => state.filterSearch)
 
@@ -28,6 +28,7 @@ export default function Search() {
         setStartDate('')
         setEndDate('')
         dispatch(setClearSearch())
+        setPage(1)
     }
     return <div
         className="pl-0 pr-4 py-4 md:p-8 "
