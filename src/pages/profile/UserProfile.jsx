@@ -7,7 +7,8 @@ export default function UserProfile() {
 
     return (
         <div
-            className="w-full py-4  px-8"
+            className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8"
+
         >
             <img src={auth.user.profileImage} alt=""
                 className="w-64 h-64 mx-auto rounded-full"

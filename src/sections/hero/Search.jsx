@@ -31,7 +31,7 @@ export default function Search({ setPage }) {
         setPage(1)
     }
     return <div
-        className="pl-0 pr-4 py-4 md:p-8 "
+    // className="pl-0 pr-4 py-4 md:p-8 "
     >
         <div
             className="flex justify-between items-center "
@@ -49,8 +49,11 @@ export default function Search({ setPage }) {
             </div>
             <Button
                 mt='0'
+                bgColor={isFilter ? 'bg-green-400' : 'bg-white'}
+                hoverBgColor={isFilter ? 'hover:bg-green-500' : 'hover:bg-gray-100'}
                 py='py-2'
                 onClick={() => setIsFilter(!isFilter)}
+
 
             >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -4,7 +4,10 @@ import Search from "../../sections/hero/Search";
 
 export default function Home() {
     const [page, setPage] = React.useState(1)
-    return <>
+    return <div
+        className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8"
+
+    >
         <Search
             setPage={setPage}
         />
@@ -13,5 +16,5 @@ export default function Home() {
             setPage={setPage}
         />
 
-    </>
+    </div>
 }

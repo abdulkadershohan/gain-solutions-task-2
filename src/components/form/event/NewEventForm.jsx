@@ -66,7 +66,6 @@ export default function NewEventForm() {
     }, [isError, error])
     return (
         <form onSubmit={handleSubmit}
-            className="w-full md:w-1/2 px-4"
         >
             <div>
                 <Input required label={'Event Title'} type="text" placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} />

@@ -176,7 +176,7 @@ export default function EventList({ page, setPage }) {
     }
     return (
         <div
-            className="pl-0 pr-4 py-2 md:p-8"
+        // className="pl-0 pr-4 py-2 md:p-8"
         >
             <h1
                 className="text-2xl font-bold mb-4"
