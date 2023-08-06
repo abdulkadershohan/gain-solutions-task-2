@@ -4,7 +4,7 @@ export const eventApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getAllEvents: builder.query({
             query: (page) => ({
-                url: `/events?_page=${page}&_limit=2`,
+                url: `/events?_page=${page}&_limit=5`,
                 method: 'GET',
             })
         }),

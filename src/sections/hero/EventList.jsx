@@ -7,8 +7,6 @@ import ModalM from "../../components/modal/Modal";
 import { useGetAllEventsQuery } from "../../features/event/eventApi";
 import { Button, Loading } from "../../utils";
 
-const LIMIT = 2
-
 export default function EventList() {
     const navigate = useNavigate()
     const [page, setPage] = React.useState(1)
