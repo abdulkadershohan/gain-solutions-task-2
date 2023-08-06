@@ -14,6 +14,14 @@ export default function RegisterForm() {
     const [passwordConfirmation, setPasswordConfirmation] = React.useState('')
     const [profileImage, setProfileImage] = React.useState('')
     const [phoneNumber, setPhoneNumber] = React.useState('')
+    // error state 
+    const [errorState, setErrorState] = React.useState({
+        nameError: '',
+        emailError: '',
+        passwordError: '',
+        phoneNumberError: '',
+        imageUrlError: ''
+    })
     const handleSubmit = (e) => {
         e.preventDefault()
         const body = {
@@ -23,6 +31,35 @@ export default function RegisterForm() {
             profileImage,
             phoneNumber
         }
+
+        // check password length below 5 
+        if (password.length < 4) {
+            Toastify({
+                type: "error",
+                message: "Password must be more than 5 characters"
+            })
+            setErrorState({ ...errorState, passwordError: "Password must be more than 5 characters" })
+            return
+        }
+        // validation for password confirmation
+        if (password !== passwordConfirmation) {
+            Toastify({
+                type: "error",
+                message: "Password and Confirm Password does not match"
+            })
+            setErrorState({ ...errorState, passwordError: "Password does not match" })
+            return
+        }
+        // check valid phone 
+        if (phoneNumber.length < 11) {
+            Toastify({
+                type: "error",
+                message: "Phone number must be 11 characters"
+            })
+            setErrorState({ ...errorState, phoneNumberError: "Phone number must be 11 characters" })
+            return
+        }
+
         register(body)
     }
     React.useEffect(() => {
@@ -30,6 +67,13 @@ export default function RegisterForm() {
             Toastify({
                 type: "success",
                 message: "Registration Successful"
+            })
+            setErrorState({
+                nameError: '',
+                emailError: '',
+                passwordError: '',
+                phoneNumberError: '',
+                imageUrlError: ''
             })
         }
     }, [isSuccess, navigate])
@@ -63,6 +107,7 @@ export default function RegisterForm() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                errorMessage={error?.data === 'Email already exists' ? 'Email already exists' : ''}
             />
             <Input
 
@@ -80,6 +125,8 @@ export default function RegisterForm() {
                 required
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
+                errorMessage={errorState.passwordError}
+
             />
             <Input
                 placeholder={'Enter your phone number'}
@@ -88,12 +135,12 @@ export default function RegisterForm() {
                 required
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
+                errorMessage={errorState.phoneNumberError}
             />
             <Input
                 placeholder={'Paste your profile image link'}
                 label={'Profile Image'}
                 type={'text'}
-                required
                 value={profileImage}
                 onChange={(e) => setProfileImage(e.target.value)}
             />
