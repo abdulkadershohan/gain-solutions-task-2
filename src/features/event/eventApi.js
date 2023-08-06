@@ -3,8 +3,8 @@ import { apiSlice } from "../api/apiSlice";
 export const eventApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getAllEvents: builder.query({
-            query: () => ({
-                url: '/events',
+            query: (page) => ({
+                url: `/events?_page=${page}&_limit=2`,
                 method: 'GET',
             })
         }),
@@ -30,7 +30,7 @@ export const eventApi = apiSlice.injectEndpoints({
                         dispatch(
                             apiSlice.util.updateQueryData(
                                 "getAllEvents",
-                                undefined,
+                                1,
                                 (draft) => {
                                     draft.push(event?.data);
                                 }
@@ -62,15 +62,15 @@ export const eventApi = apiSlice.injectEndpoints({
                         dispatch(
                             apiSlice.util.updateQueryData(
                                 "getAllEvents",
-                                undefined,
+                                1,
                                 (draft) => {
                                     // find and replace the edited event
-                                    const draftQuiz = draft.find((as) => as.id == arg.id);
-                                    draftQuiz.title = arg?.data?.title;
-                                    draftQuiz.description = arg?.data?.description;
-                                    draftQuiz.start_date = arg?.data?.start_date;
-                                    draftQuiz.end_date = arg?.data?.end_date;
-                                    draftQuiz.location = arg?.data?.location;
+                                    const draftEvent = draft.find((as) => as.id == arg.id);
+                                    draftEvent.title = arg?.data?.title;
+                                    draftEvent.description = arg?.data?.description;
+                                    draftEvent.start_date = arg?.data?.start_date;
+                                    draftEvent.end_date = arg?.data?.end_date;
+                                    draftEvent.location = arg?.data?.location;
                                 }
                             )
                         );
@@ -97,11 +97,11 @@ export const eventApi = apiSlice.injectEndpoints({
                         dispatch(
                             apiSlice.util.updateQueryData(
                                 "getAllEvents",
-                                undefined,
+                                1,
                                 (draft) => {
                                     // find and replace the edited event
-                                    const draftQuiz = draft.find((as) => as.id == arg.id);
-                                    draftQuiz.attendees = arg?.data?.attendees;
+                                    const draftEvent = draft.find((as) => as.id == arg.id);
+                                    draftEvent.attendees = arg?.data?.attendees;
 
                                 }
                             )

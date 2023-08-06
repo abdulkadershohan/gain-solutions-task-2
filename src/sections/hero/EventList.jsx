@@ -7,32 +7,14 @@ import ModalM from "../../components/modal/Modal";
 import { useGetAllEventsQuery } from "../../features/event/eventApi";
 import { Button, Loading } from "../../utils";
 
+const LIMIT = 2
+
 export default function EventList() {
     const navigate = useNavigate()
-    const { data: tableData, isLoading, isError, error } = useGetAllEventsQuery()
-    // const [page, setPage] = React.useState(1)
-    // const [end, setEnd] = React.useState(false)
+    const [page, setPage] = React.useState(1)
+    const { data: tableData, isLoading, isError, error } = useGetAllEventsQuery(page)
     // const [eventListData, setTableData] = React.useState([])
-    // React.useEffect(() => {
-    //     // get 5 slice from every page increment
-    //     const start = (page - 1) * 2
-    //     setEnd(page * 2)
-    //     setTableData(tableData?.slice(start, end))
-    //     console.log(end)
-
-    //     // const start = (page - 1) * 5
-    //     // const end = page * 5
-    //     // // handle end is greater then data length
-    //     // if (end > tableData?.length) {
-    //     //     Toastify({
-    //     //         type: 'error',
-    //     //         message: 'No more data repining from the first page'
-    //     //     })
-    //     //     setPage(1)
-    //     //     return
-    //     // }
-    //     // setTableData(tableData?.slice(start, end))
-    // }, [tableData, page, end])
+    console.log(tableData)
     const auth = useSelector(state => state.auth)
     const tableRow = ['Title', 'Location', 'Start Date', 'End Date', 'RSVP', 'Show Details', 'Action']
 
@@ -157,26 +139,18 @@ export default function EventList() {
                 </tbody>
             </table>
             <nav className="flex items-center justify-between py-4" aria-label="Table navigation">
-                <span className="text-sm font-normal text-gray-400">Showing <span className="font-semibold text-gray-900 ">1-10</span> of <span className="font-semibold text-gray-900 ">1000</span></span>
-                <ul className="inline-flex -space-x-px text-sm h-8 gap-1">
+                <ul className=" -space-x-px text-sm h-8 gap-1 flex items-center justify-between py-4">
                     <li
                         onClick={() => {
-                            // if (page > 1) {
-                            //     setPage(prev => prev - 1)
-                            // }
+                            if (page > 1) {
+                                setPage(prev => prev - 1)
+                            }
                         }}
                     >
                         <p className="flex cursor-pointer items-center justify-center px-3 h-8 ml-0 leading-tight   border  rounded-l-lg bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white">Previous</p>
                     </li>
                     <li
-                        onClick={() => {
-                            // if (end > tableData?.length) {
-                            //     return
-                            // }
-                            // else {
-                            //     setPage(prev => prev + 1)
-                            // }
-                        }}
+                        onClick={() => { setPage(prev => prev + 1) }}
                     >
                         <p className="flex cursor-pointer items-center justify-center px-3 h-8 leading-tight rounded-r-lg bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white">Next</p>
                     </li>
