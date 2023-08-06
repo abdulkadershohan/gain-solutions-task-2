@@ -21,6 +21,22 @@ export default function NewEventForm() {
             createdBy: auth?.user,
             attendees: []
         }
+        // end date cant be grater then start date
+        if (new Date(start_date) > new Date(end_date)) {
+            Toastify({
+                type: "error",
+                message: "Can finish before the event starts "
+            })
+            return
+        }
+        // location at least 4 characters
+        if (location.length < 4) {
+            Toastify({
+                type: "error",
+                message: "Location must be more than 4 characters"
+            })
+            return
+        }
         createEvent(body)
     }
     React.useEffect(() => {
