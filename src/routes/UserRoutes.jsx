@@ -6,6 +6,7 @@ import Registration from "../pages/auth/registration/Registration";
 import EditEvents from "../pages/editEvents/EditEvents";
 import Home from "../pages/home/Home";
 import NewEvents from "../pages/newEvents/NewEvents";
+import NotFound from "../pages/notFound/NotFound";
 import UserProfile from "../pages/profile/UserProfile";
 import { Loading } from "../utils";
 import PrivateRoute from "./PrivateRoute";
@@ -46,6 +47,7 @@ export default function UserRoutes() {
                 <Route path="/edit-event/:id" element={<PrivateRoute><EditEvents /></PrivateRoute>} />
 
                 <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>
     )
