@@ -37,19 +37,15 @@ export default function Navbar() {
     }
     return (
         <div
-            className="container-md bg-white shadow-md     sticky top-0 z-50  "
-        //  className="mx-auto   px-4  "
-        //  className="mx-auto max-w-screen-xl space-y-8 px-4  sm:px-6 lg:space-y-16 lg:px-8 bg-white shadow-md     sticky top-0 z-50"
-        //
+            className=" bg-white shadow-md sticky top-0 z-50  "
         >
             <div
-                className="mx-auto max-w-screen-xl  px-4  sm:px-6  lg:px-8"
-
+                className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 "
             >
 
                 {/* navbar section */}
                 <div
-                    className="flex justify-between items-center py-4  gap-2 "
+                    className="flex justify-between items-center py-4  gap-2"
                 >
                     {/* logo section */}
                     <div
@@ -82,7 +78,7 @@ export default function Navbar() {
                                     onClick={() => setSelected(nav.id)}
                                     className={`
                                 ${selected === nav.id && ' underline '}
-                                font-play font-medium text-lg text-gray-600 hover:text-gray-800 hover:bg-white px-4 py-2 rounded-md
+                                font-play font-medium text-lg text-gray-600 hover:text-gray-800 hover:bg-gray-200 px-4 py-2 rounded-md
                                 `}
                                 >
                                     {nav.title}
