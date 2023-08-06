@@ -1,12 +1,25 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setSearchFilter } from "../../features/filterSearch/FilterSearchSlice";
 import { Button, Input } from "../../utils";
 
 export default function Search() {
+    const dispatch = useDispatch()
     const [search, setSearch] = React.useState('')
     const [loaction, setLocation] = React.useState('')
     const [startDate, setStartDate] = React.useState('')
     const [endDate, setEndDate] = React.useState('')
     const [isFilter, setIsFilter] = React.useState(false)
+
+    const handleSubmit = () => {
+        dispatch(setSearchFilter({
+            text: search,
+            location: loaction,
+            start_date: startDate,
+            end_date: endDate
+        }))
+
+    }
     return <div
         className="pl-0 pr-4 py-4 md:p-8 "
     >
@@ -77,6 +90,7 @@ export default function Search() {
             >
                 <Button
                     text={'Search'}
+                    onClick={handleSubmit}
                 />
 
                 {
@@ -88,6 +102,5 @@ export default function Search() {
                 }
             </div>
         </div>
-
     </div>;
 }

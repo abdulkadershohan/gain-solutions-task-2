@@ -107,7 +107,7 @@ export default function ModalM({ data, }) {
                             </thead>
                             <tbody>
                                 {attendees.map((item) => (
-                                    <tr key={item.id}>
+                                    <tr key={Math.random()}>
                                         <td className="border border-black ...">{item.name}</td>
                                         <td className="border border-black ...">{item.email}</td>
                                     </tr>

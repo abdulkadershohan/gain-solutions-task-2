@@ -12,7 +12,6 @@ export default function EventList() {
     const [page, setPage] = React.useState(1)
     const { data: tableData, isLoading, isError, error } = useGetAllEventsQuery(page)
     // const [eventListData, setTableData] = React.useState([])
-    console.log(tableData)
     const auth = useSelector(state => state.auth)
     const tableRow = ['Title', 'Location', 'Start Date', 'End Date', 'RSVP', 'Show Details', 'Action']
 
