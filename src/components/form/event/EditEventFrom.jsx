@@ -102,9 +102,7 @@ export default function EditEventFrom() {
         content = <p className="text-red-500">{error?.error}</p>
     }
     if (!isLoading && !isError && isSuccess) {
-        content = <form onSubmit={handleSubmit}
-            className="w-full md:w-1/2 px-4"
-        >
+        content = <form onSubmit={handleSubmit}>
             <div>
                 <Input required label={'Event Title'} type="text" placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} />
                 <Input required label='Description' textArea type="text" placeholder="Description here..." value={description} onChange={e => setDdescription(e.target.value)} />
