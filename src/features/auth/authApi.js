@@ -14,7 +14,7 @@ export const authApi = apiSlice.injectEndpoints({
                     const result = await queryFulfilled;
 
                     localStorage.setItem(
-                        "studentAuth",
+                        "auth",
                         JSON.stringify({
                             accessToken: result.data.accessToken,
                             user: result.data.user,
